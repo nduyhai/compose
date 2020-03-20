@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  rabbitmq:
+    image: bitnami/rabbitmq:3.8
+    restart: on-failure
+    ports:
+      - 4369:4369
+      - 5672:5672
+      - 25672:25672
+      - 15672:15672
+    environment:
+      RABBITMQ_USERNAME: ad
+      RABBITMQ_PASSWORD: pw

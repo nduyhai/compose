@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+  localsonar:
+    image: sonarqube:7.9-community
+    restart: always
+    ports:
+      - 9000:9000
+  
