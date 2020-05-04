@@ -1,0 +1,12 @@
+version: '3.1'
+
+services:
+  couchbase:
+    image: couchbase:community-6.5.1
+    restart: on-failure
+    environment:
+      ACTIVEMQ_ADMIN_LOGIN: admin
+      ACTIVEMQ_ADMIN_PASSWORD: pw
+    ports:
+      - 8091-8094:8091-8094 
+      - 11210:11210
