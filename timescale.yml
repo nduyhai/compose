@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+
+  timescaledb:
+    image: timescale/timescaledb:2.2.0-pg13
+    restart: on-failure
+    environment:
+      POSTGRES_USER: ad
+      POSTGRES_PASSWORD: pwd
+      POSTGRES_DB: myapp
+    ports:
+      - 5432:5432
