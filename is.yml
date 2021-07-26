@@ -1,0 +1,9 @@
+version: '3.1'
+
+services:
+
+  wso2_is:
+    image: wso2/wso2is:5.7.0
+    restart: on-failure
+    ports:
+      - 9443:9443
