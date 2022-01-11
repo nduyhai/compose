@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  local_keycloak:
+    image: quay.io/keycloak/keycloak:15.0.2
+    restart: always
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+    ports:
+      - 8080:8080
+
+
+
+      

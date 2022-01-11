@@ -2,12 +2,9 @@ version: '3.1'
 
 services:
   localactivemq:
-    image: webcenter/activemq:5.14.3
+    image: rabbitmq:3.9.11-management-alpine
     restart: always
-    environment:
-      ACTIVEMQ_ADMIN_LOGIN: admin
-      ACTIVEMQ_ADMIN_PASSWORD: pw
     ports:
-      - 8161:8161
-      - 61616:61616
+      - 15672:15672
+      - 5672:5672
       - 61613:61613
