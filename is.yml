@@ -7,3 +7,6 @@ services:
     restart: on-failure
     ports:
       - 9443:9443
+
+network:
+  wso2_networks

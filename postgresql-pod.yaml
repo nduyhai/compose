@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kompose.cmd: kompose convert -f postgresql.yml
+    kompose.version: 1.23.0 (bc7d9f4f)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: postgresql
+  name: postgresql
+spec:
+  containers:
+    - env:
+        - name: POSTGRES_DB
+          value: myapp
+        - name: POSTGRES_PASSWORD
+          value: pwd
+        - name: POSTGRES_USER
+          value: ad
+      image: postgres:12.2
+      name: postgresql
+      ports:
+        - containerPort: 5432
+      resources: {}
+  restartPolicy: OnFailure
+status: {}
