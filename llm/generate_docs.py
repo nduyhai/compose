@@ -1,11 +1,11 @@
 # generate_docs.py
 import os
 from pathlib import Path
-from langchain.document_loaders import DirectoryLoader, TextLoader
+from langchain_community.document_loaders import DirectoryLoader, TextLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
-from langchain.vectorstores import Chroma
-from langchain.embeddings import HuggingFaceEmbeddings
-from langchain.llms import Ollama
+from langchain_community.vectorstores import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
+from langchain_ollama import OllamaLLM
 from langchain.chains import RetrievalQA
 
 # === Settings ===
@@ -33,18 +33,18 @@ splitter = RecursiveCharacterTextSplitter(chunk_size=500, chunk_overlap=100)
 chunks = splitter.split_documents(documents)
 
 # === Embedding and Vectorstore ===
-embedding = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
+embedding = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
 vectorstore = Chroma.from_documents(chunks, embedding=embedding)
 
 # === LLM and Retrieval QA ===
-llm = Ollama(model="llama2", base_url="http://localhost:11434")
+llm = OllamaLLM(model="llama2", base_url="http://localhost:11434")
 qa_chain = RetrievalQA.from_chain_type(llm=llm, retriever=vectorstore.as_retriever())
 
 # === Generate docs for each question ===
 for question in PRESET_QUESTIONS:
     print(f"\n🤖 Asking: {question}")
     try:
-        answer = qa_chain.run(question)
+        answer = qa_chain.invoke({"query": question})
     except Exception as e:
         print(f"❌ Error answering question: {e}")
         continue

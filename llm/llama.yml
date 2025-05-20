@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  ollama:
+    image: ollama/ollama
+    container_name: ollama
+    ports:
+      - "11434:11434"
+    volumes:
+      - ollama-data:/root/.ollama
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - capabilities: [gpu]  # remove this block if you don't have a GPU
+  flowise:
+    image: flowiseai/flowise
+    container_name: flowise
+    ports:
+      - "3000:3000"
+    environment:
+      - PORT=3000
+    volumes:
+      - flowise-data:/root/.flowise
+    depends_on:
+      - ollama
+    restart: unless-stopped
+volumes:
+  ollama-data:
+  flowise-data:
