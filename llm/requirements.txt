@@ -1,0 +1,8 @@
+langchain>=0.1.0
+langchain-community>=0.0.20
+chromadb>=0.4.22
+ollama>=0.1.6
+tiktoken>=0.5.1
+unstructured>=0.10.27  # for future file support like PDFs, HTML
+python-magic-bin; sys_platform == "win32"
+sentence-transformers
