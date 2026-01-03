@@ -1,0 +1,6 @@
+services:
+  uptrace:
+    image: uptrace/uptrace:latest
+    ports:
+      - '4317:4317' # OTLP gRPC
+      - '443:443' # OTLP HTTP
