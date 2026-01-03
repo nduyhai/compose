@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  pyroscope-x:
+    image: grafana/pyroscope:latest
+    container_name: pyroscope-x
+    ports:
+      - "4040:4040"   # Pyroscope UI
+    extra_hosts:
+      - "host.docker.internal:host-gateway"

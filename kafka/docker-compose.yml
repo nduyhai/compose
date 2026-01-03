@@ -1,7 +1,7 @@
 services:
-  kafka:
+  kafka-x:
     image: confluentinc/cp-kafka:7.8.0
-    container_name: kafka
+    container_name: kafka-x
     ports:
       - "9092:9092"   # internal / other containers via kafka:9092
       - "9094:9094"   # external / host via localhost:9094so
@@ -35,4 +35,4 @@ services:
     volumes:
       - kafka-data:/var/lib/kafka/data
 volumes:
-  kafka-data
+  kafka-data:
