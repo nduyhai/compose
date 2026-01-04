@@ -1,11 +1,9 @@
 version: "3.8"
 
 services:
-  keycloak-x:
+  x_keycloak:
     image: quay.io/keycloak/keycloak:26.0.0
     container_name: keycloak
-    depends_on:
-      - kafka
     ports:
       - "8080:8080"
     environment:

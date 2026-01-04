@@ -1,9 +1,9 @@
 version: '3.8'
 
 services:
-  redis-x:
+  x_redis:
     image: redis:alpine
-    container_name: redis-x
+    container_name: x_redis
     command: redis-server --appendonly yes
     ports:
       - "6379:6379"

@@ -1,8 +1,8 @@
 version: "3.8"
 services:
-  pyroscope-x:
+  x_pyroscope:
     image: grafana/pyroscope:latest
-    container_name: pyroscope-x
+    container_name: x_pyroscope
     ports:
       - "4040:4040"   # Pyroscope UI
     extra_hosts:
